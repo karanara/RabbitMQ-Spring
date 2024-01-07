@@ -52,4 +52,12 @@ public class TestController {
 		
 		return "SpringRabbitMQ with creation of queeus in localhost";
 	}
+	
+	@GetMapping("/defaultExchange/{name}")
+	public String testDefault(@PathVariable("name") String name) {
+		Person p = new Person(1L,name);
+		rabbitTemplate.convertAndSend("Mobile",p);
+		return "Default Exchange in Rabbit MQ";
+		
+	}
 }
